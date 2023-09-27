@@ -3,11 +3,7 @@ package com.example.newsapp
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.google.gson.GsonBuilder
-import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import java.io.FileWriter
-import java.nio.file.Paths
 import java.util.Optional
 import kotlin.streams.toList
 
