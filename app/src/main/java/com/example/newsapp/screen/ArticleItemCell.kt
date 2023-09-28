@@ -1,39 +1,32 @@
 package com.example.newsapp.screen
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import coil.compose.AsyncImage
-import com.example.newsapp.NewsItem
+import com.example.newsapp.Article
 
 @Composable
 fun NewsItemCell(
-    newsItem: NewsItem,
+    article: Article,
     onClick: () -> Unit
     ) {
     Column(
         modifier = Modifier.clickable { onClick() }
     ){
         AsyncImage(
-            model = newsItem.imageUrl,
+            model = article.imageUrl,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -44,15 +37,15 @@ fun NewsItemCell(
                 .padding(10.dp)
         ) {
             Text(
-                text = newsItem.title,
+                text = article.title,
                 fontWeight = FontWeight.Bold,
                 fontSize = 5.em
             )
             Spacer(modifier = Modifier.padding(vertical = 5.dp))
             Row {
-                Text(text = newsItem.source)
+                Text(text = article.source)
                 Spacer(modifier = Modifier.padding(horizontal = 5.dp))
-                Text(text = newsItem.date)
+                Text(text = article.date)
             }
         }
     }

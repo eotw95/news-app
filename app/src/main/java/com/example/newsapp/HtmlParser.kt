@@ -1,7 +1,6 @@
 package com.example.newsapp
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import org.jsoup.nodes.Element
 import java.util.Optional
@@ -9,7 +8,7 @@ import kotlin.streams.toList
 
 object HtmlParser {
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getNewsList(): List<NewsItem> {
+    fun getNewsList(): List<Article> {
         val url = "https://news.yahoo.co.jp/ranking/access/news"
         val document = JsoupClient.fromUrl(url)
         val tag = "a.newsFeed_item_link"
@@ -18,7 +17,7 @@ object HtmlParser {
         return listElement.map { parseItem(it) }
     }
 
-    private fun parseItem(element: Element): NewsItem {
+    private fun parseItem(element: Element): Article {
         val url = element.href()
         val title = element.firstText("div.newsFeed_item_title")
         val source = element.firstText("span.newsFeed_item_media")
@@ -26,7 +25,7 @@ object HtmlParser {
         val imageUrl = element.selectFirstOpt("img")
             .map { it.attr("src") }.orElse("").substringBefore("?")
 
-        return NewsItem(title, url, source, date, imageUrl)
+        return Article(title, url, source, date, imageUrl)
     }
 }
 

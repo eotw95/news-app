@@ -1,6 +1,6 @@
 package com.example.newsapp
 
-data class NewsItem(
+data class Article(
     val title: String = "",
     val url: String = "",
     val source: String = "",
