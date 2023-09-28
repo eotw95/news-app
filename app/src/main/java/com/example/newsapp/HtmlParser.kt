@@ -9,16 +9,13 @@ import kotlin.streams.toList
 
 object HtmlParser {
     @RequiresApi(Build.VERSION_CODES.O)
-    fun get() {
+    fun getNewsList(): List<NewsItem> {
         val url = "https://news.yahoo.co.jp/ranking/access/news"
         val document = JsoupClient.fromUrl(url)
         val tag = "a.newsFeed_item_link"
         val listElement = document.map { it.select(tag).stream().toList() }.orElse(listOf())
-        val newsList: List<NewsItem> = listElement.map { parseItem(it) }
-        Log.d("HtmlParser", "newsList=$newsList")
 
-//        val gson = GsonBuilder().setPrettyPrinting().create()
-//        gson.toJson(newsList, FileWriter(Paths.get("news.json").toFile()))
+        return listElement.map { parseItem(it) }
     }
 
     private fun parseItem(element: Element): NewsItem {
