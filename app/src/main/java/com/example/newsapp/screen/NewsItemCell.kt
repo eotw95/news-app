@@ -1,5 +1,6 @@
 package com.example.newsapp.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,8 +25,13 @@ import coil.compose.AsyncImage
 import com.example.newsapp.NewsItem
 
 @Composable
-fun NewsItemCell(newsItem: NewsItem) {
-    Column{
+fun NewsItemCell(
+    newsItem: NewsItem,
+    onClick: () -> Unit
+    ) {
+    Column(
+        modifier = Modifier.clickable { onClick() }
+    ){
         AsyncImage(
             model = newsItem.imageUrl,
             contentDescription = null,

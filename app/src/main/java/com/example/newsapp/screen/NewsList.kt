@@ -20,7 +20,9 @@ import com.example.newsapp.NewsItem
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NewsList() {
+fun NewsList(
+    onClick: () -> Unit
+) {
     val initialValue = listOf(NewsItem())
     var newsList by remember { mutableStateOf(initialValue) }
     Thread {
@@ -34,7 +36,10 @@ fun NewsList() {
     ) {
         LazyColumn(content = {
             items(newsList) { item ->
-                NewsItemCell(item)
+                NewsItemCell(
+                    newsItem = item,
+                    onClick = onClick
+                )
             }
         })
     }
