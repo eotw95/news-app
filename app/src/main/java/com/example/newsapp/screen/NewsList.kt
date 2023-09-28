@@ -34,9 +34,7 @@ fun NewsList() {
     ) {
         LazyColumn(content = {
             items(newsList) { item ->
-                Text(text = item.title)
-                Text(text = item.date)
-                Text(text = item.source)
+                NewsItemCell(item)
             }
         })
     }
