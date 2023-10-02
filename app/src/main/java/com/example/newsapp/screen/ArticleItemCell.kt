@@ -20,10 +20,10 @@ import com.example.newsapp.Article
 @Composable
 fun NewsItemCell(
     article: Article,
-    onClick: () -> Unit
+    onClick: (String) -> Unit
     ) {
     Column(
-        modifier = Modifier.clickable { onClick() }
+        modifier = Modifier.clickable { onClick(article.url) }
     ){
         AsyncImage(
             model = article.imageUrl,

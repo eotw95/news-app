@@ -20,7 +20,7 @@ import com.example.newsapp.Article
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NewsList(
-    onClick: () -> Unit
+    onClick: (String) -> Unit
 ) {
     val initialValue = listOf(Article())
     var newsList by remember { mutableStateOf(initialValue) }

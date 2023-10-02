@@ -38,11 +38,17 @@ class MainActivity : ComponentActivity() {
                     builder = {
                         composable("newsList") {
                             NewsList(
-                                onClick = { navController.navigate("detail") }
+                                onClick = { url ->
+                                    navController.navigate("detail/$url")
+                                }
                             )
                         }
-                        composable("detail") {
-                            NewsDetail(url = "https://news.yahoo.co.jp/ranking/access/news")
+                        composable("detail/{url}") { navBackStackEntry ->
+                            navBackStackEntry.arguments?.getString("url")?.let { url ->
+                                NewsDetail(url = url)
+                            } ?: run {
+                                NewsDetail(url = "https://news.yahoo.co.jp/ranking/access/news")
+                            }
                         }
                     },
                 )
