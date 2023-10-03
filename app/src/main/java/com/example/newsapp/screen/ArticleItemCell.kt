@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import coil.compose.AsyncImage
 import com.example.newsapp.Article
+import java.net.URL
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun NewsItemCell(
@@ -23,7 +26,10 @@ fun NewsItemCell(
     onClick: (String) -> Unit
     ) {
     Column(
-        modifier = Modifier.clickable { onClick(article.url) }
+        modifier = Modifier.clickable {
+            val encordUrl = URLEncoder.encode(article.url, StandardCharsets.UTF_8.toString())
+            onClick(encordUrl)
+        }
     ){
         AsyncImage(
             model = article.imageUrl,
