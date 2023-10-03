@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import coil.compose.AsyncImage
 import com.example.newsapp.Article
-import java.net.URL
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
