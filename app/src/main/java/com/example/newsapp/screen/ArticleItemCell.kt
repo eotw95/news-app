@@ -54,6 +54,5 @@ fun NewsItemCell(
             }
         }
     }
-    Divider()
-    Spacer(modifier = Modifier.padding(vertical = 5.dp))
+    Divider(thickness = 20.dp)
 }

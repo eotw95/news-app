@@ -25,9 +25,15 @@ fun MainNavHost(navController: NavHostController) {
             }
             composable("detail/{url}") { navBackStackEntry ->
                 navBackStackEntry.arguments?.getString("url")?.let { url ->
-                    NewsDetail(url = url)
+                    NewsDetail(
+                        url = url,
+                        onClickButton =  { navController.navigateUp() }
+                    )
                 } ?: run {
-                    NewsDetail(url = "https://news.yahoo.co.jp/ranking/access/news")
+                    NewsDetail(
+                        url = "https://news.yahoo.co.jp/ranking/access/news",
+                        onClickButton =  { navController.navigateUp() }
+                    )
                 }
             }
         }
