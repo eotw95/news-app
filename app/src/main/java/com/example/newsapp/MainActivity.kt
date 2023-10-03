@@ -32,26 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsAppTheme {
                 val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = "newsList",
-                    builder = {
-                        composable("newsList") {
-                            NewsList(
-                                onClick = { url ->
-                                    navController.navigate("detail/$url")
-                                }
-                            )
-                        }
-                        composable("detail/{url}") { navBackStackEntry ->
-                            navBackStackEntry.arguments?.getString("url")?.let { url ->
-                                NewsDetail(url = url)
-                            } ?: run {
-                                NewsDetail(url = "https://news.yahoo.co.jp/ranking/access/news")
-                            }
-                        }
-                    },
-                )
+                MainNavHost(navController = navController)
             }
         }
     }
