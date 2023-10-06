@@ -44,15 +44,20 @@ fun NewsItemCell(
             Text(
                 text = article.title,
                 fontWeight = FontWeight.Bold,
-                fontSize = 5.em
+                fontSize = 3.em
             )
             Spacer(modifier = Modifier.padding(vertical = 5.dp))
             Row {
-                Text(text = article.source)
+                Text(
+                    text = article.source,
+                    fontSize = 1.em
+                )
                 Spacer(modifier = Modifier.padding(horizontal = 5.dp))
-                Text(text = article.date)
+                Text(
+                    text = article.date,
+                    fontSize = 1.em
+                )
             }
         }
     }
-    Divider(thickness = 20.dp)
 }
