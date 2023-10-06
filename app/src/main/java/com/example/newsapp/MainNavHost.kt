@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.newsapp.screen.ArticleGrid
 import com.example.newsapp.screen.NewsDetail
-import com.example.newsapp.screen.NewsList
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -17,7 +17,7 @@ fun MainNavHost(navController: NavHostController) {
         startDestination = "newsList",
         builder = {
             composable("newsList") {
-                NewsList(
+                ArticleGrid(
                     onClick = { url ->
                         navController.navigate("detail/$url")
                     }

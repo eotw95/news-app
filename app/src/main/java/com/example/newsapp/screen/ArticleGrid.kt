@@ -3,23 +3,21 @@ package com.example.newsapp.screen
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.newsapp.HtmlParser
 import com.example.newsapp.Article
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NewsList(
+fun ArticleGrid(
     onClick: (String) -> Unit
 ) {
     val initialValue = listOf(Article())
@@ -29,17 +27,14 @@ fun NewsList(
         Log.d("MainActivity", "newsList=$$newsList")
     }.start()
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(minSize = 194.dp)
     ) {
-        LazyColumn(content = {
-            items(newsList) { item ->
-                NewsItemCell(
-                    article = item,
-                    onClick = onClick
-                )
-            }
-        })
+        items(newsList) { article ->
+            NewsItemCell(
+                article = article,
+                onClick = onClick
+            )
+        }
     }
 }
